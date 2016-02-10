@@ -5,13 +5,13 @@ window.Giphy = new (function(){
     var that = this;
     
     this.searchByWord = function(word, limit, callback){
-        var query = that.root+'/v1/gifs/search?'+$.param({
-            q : word
-            ,limit : limit
-            ,api_key : that.key
-        });
         $.ajax({
-            url : query
+            url : that.root+'/v1/gifs/search'
+            ,data : {
+                q : word
+                ,limit : limit
+                ,api_key : that.key
+            }
             ,success:function(response){
                 callback(response.data);
             }
